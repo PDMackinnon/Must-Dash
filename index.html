@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<title>
+			Page Title
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.2.min.css" type="text/css">
+		<script src="js/jquery.js" type="text/javascript">
+</script>
+		<script src="js/jquery.mobile-1.4.2.min.js" type="text/javascript">
+</script>
+		<style type="text/css">
+
+		#face { 
+		display: block;
+		width:320px;
+		height:540px;
+
+		}
+		#tashes {
+		position:relative;
+		display: block;
+		top:-265px;
+		width: 320px;
+		overflow: hidden;
+		left:13px;
+
+		}
+		#hats { 
+		position:relative;
+		display: block;
+		top:-790px;
+		width: 320px;
+		overflow: hidden;
+		}
+
+
+		#tashes {   
+		background-image: url(images/tashes.png);
+		display: block;
+		width:320px;
+		height:100px;
+		background-repeat:repeat-x;         
+		-webkit-transition-property: background;
+		-webkit-transition-duration: 1s;
+		-webkit-transition-timing-function: ease-out;
+		}
+
+		#hats { 
+		background-image: url(images/hats.png);
+		width:320px;
+		height:400px;
+
+		background-repeat:repeat-x;
+
+						
+						
+		-webkit-transition-property: background;
+		-webkit-transition-duration: 1s;
+		-webkit-transition-timing-function: ease-out;
+		}
+
+
+
+		</style>
+		<script type="text/javascript">
+
+		var tashX = 0;
+		var hatX = 0;
+
+		function rndScreenNumber() {
+				return Math.floor((Math.random()*6)+3) * 320;
+		}
+
+
+		function tashLeft() {
+			tashX -= this.rndScreenNumber();
+			$("#tashes").css("backgroundPosition",tashX + "px center");
+		}
+
+		function tashRight() {
+			tashX += this.rndScreenNumber();
+			$("#tashes").css("backgroundPosition",tashX + "px center");
+		}
+
+			function hatLeft() {
+			hatX -= this.rndScreenNumber();
+			$("#hats").css("backgroundPosition",hatX + "px center");
+		}
+
+		function hatRight() {
+			hatX += this.rndScreenNumber();
+			$("#hats").css("backgroundPosition",hatX + "px center");
+		}
+
+
+		$(function() {// on DOM ready:
+			
+					
+		$("#cam").on("change",function(e) {
+		var URL=window.URL|| window.webkitURL; 
+		if((e.target.files.length == 1) && (e.target.files[0].type.indexOf("image/") == 0)) {
+			$("#facePic").attr("src",URL.createObjectURL(e.target.files[0]));
+			}
+		});
+			
+
+			$("#face").on("touchStart",function(e) {
+				e.preventDefault();
+				
+				var feature = Math.floor(Math.random() * 4);
+				
+				
+				  if (feature == 0) {
+						 tashLeft();
+
+		 
+		}
+		else if (feature ==1) {
+		 
+						 tashRight();
+
+		}
+		else if (feature ==2) {
+		 
+		 hatLeft();
+		}
+		else if (feature ==3) {
+		 
+		 hatRight(); 
+		}
+
+				
+				
+			});
+
+		$("#face").on("click",function(e) {
+				e.preventDefault();
+
+						   var feature = Math.floor(Math.random() * 4);
+
+		if (feature == 0) {
+						 tashLeft();
+
+		 
+		}
+		else if (feature ==1) {
+		 
+						 tashRight();
+
+		}
+		else if (feature ==2) {
+		 
+		 hatLeft();
+		}
+		else if (feature ==3) {
+		 
+		 hatRight(); 
+		}
+
+			});
+		});
+
+
+
+
+
+		</script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-role="header" data-position="fixed">
+				<h1>
+					Must Dash
+				</h1>
+			</div><!-- /header -->
+			<div role="main" class="ui-content">
+				<div id="container">
+					<div id="face">
+						<img id="facePic" src="images/face2.png" name="facePic">
+					</div>
+					<div id="tashes"></div>
+					<div id="hats"></div>
+				</div>
+			</div><!-- /content -->
+			<div data-role="footer" data-position="fixed">
+				<form enctype="multipart/form-data" method="post">
+					<div data-role="fieldcontain">
+						<label for="cam">Take Photo:</label> <input type="file" value="Take Photo" name="cam" id="cam" accept="image/*;capture=camera">
+					</div>
+				</form>
+			</div><!-- /footer -->
+		</div><!-- /page -->
+	</body>
+</html>
