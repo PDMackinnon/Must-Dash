@@ -169,11 +169,19 @@
 		</script>
 	</head>
 	<body>
-		<div data-role="page">
+		<div data-role="page" id="main">
 			<div data-role="header" data-position="fixed">
 				<h1>
 					Must Dash
 				</h1>
+            <div data-role="navbar" >
+                <ul>
+                    <li> <a href="#" class="ui-btn-active"> Main </a></li>
+                    <li> <a href="#newphoto" class="ui-btn-active"> New Photo </a></li>
+                
+                </ul>
+                
+            </div>
 			</div><!-- /header -->
 			<div role="main" class="ui-content">
 				<div id="container">
@@ -186,5 +194,45 @@
 			</div><!-- /content -->
 			
 		</div><!-- /page -->
+        
+        
+        
+        
+        <div data-role="page" id="newphoto">
+			<div data-role="header" data-position="fixed">
+				<h1>
+					Must Dash
+				</h1>
+            <div data-role="navbar" >
+                <ul>
+                    <li> <a href="#main" class="ui-btn-active"> Main </a></li>
+                    <li> <a href="#" class="ui-btn-active"> New Photo </a></li>
+                
+                </ul>
+                
+            </div>
+			</div><!-- /header -->
+			<div role="main" class="ui-content">
+				<div id="photo">
+                    
+                    <form enctype="multipart/form-data" method="post">
+					<div data-role="fieldcontain">
+						<label for="cam">Take Photo:</label> <input type="file" value="Take Photo" name="cam" id="cam" accept="image/*;capture=camera">
+					</div>
+				</form>
+					
+				</div>
+			</div><!-- /content -->
+			
+		</div><!-- /page -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
 	</body>
 </html>
